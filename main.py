@@ -7,12 +7,12 @@ from lxml import etree
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    "input_files", help="Input files (will be overwritten)", nargs="+")
+    "input", help="Input file (will be overwritten)", nargs="+")
 parser.add_argument("-m", "--margin", help="Margin in mm",
                     type=float, default=0.3)
 args = parser.parse_args()
 
-for file in args.input_files:
+for file in args.input:
     subprocess.run(["inkscape", "--export-type=svg", "--export-overwrite",
                     "--export-margin=0", "--export-area-drawing", file],
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
