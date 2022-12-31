@@ -9,7 +9,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "input", help="Input file (will be overwritten)", nargs="+")
 parser.add_argument("-m", "--margin", help="Margin in mm",
-                    type=float, default=0.3)
+                    type=float, default=1)
 args = parser.parse_args()
 
 for file in args.input:
