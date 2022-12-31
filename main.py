@@ -36,15 +36,15 @@ for file in args.input:
 
     # Increase the margin by 0.3mm by parsing and editing the viewbox as well as the width and height
     viewbox = root.attrib["viewBox"].split(" ")
-    viewbox[0] = str(float(viewbox[0].replace("mm", "")) - args.margin)
-    viewbox[1] = str(float(viewbox[1].replace("mm", "")) - args.margin)
-    viewbox[2] = str(float(viewbox[2].replace("mm", "")) + 2 * args.margin)
-    viewbox[3] = str(float(viewbox[3].replace("mm", "")) + 2 * args.margin)
+    viewbox[0] = str(float(viewbox[0]) - args.margin)
+    viewbox[1] = str(float(viewbox[1]) - args.margin)
+    viewbox[2] = str(float(viewbox[2]) + 2 * args.margin)
+    viewbox[3] = str(float(viewbox[3]) + 2 * args.margin)
     root.attrib["viewBox"] = " ".join(viewbox)
     root.attrib["width"] = str(
-        float(root.attrib["width"].replace("mm", "")) + 2 * args.margin)
+        float(root.attrib["width"].replace("mm", "")) + 2 * args.margin) + "mm"
     root.attrib["height"] = str(
-        float(root.attrib["height"].replace("mm", "")) + 2 * args.margin)
+        float(root.attrib["height"].replace("mm", "")) + 2 * args.margin) + "mm"
 
     # Write output
     tree.write(file, pretty_print=True)
